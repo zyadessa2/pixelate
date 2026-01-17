@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/src/lib/prisma'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 // Helper to validate ObjectId
 function isValidObjectId(id: string): boolean {
   return /^[a-fA-F0-9]{24}$/.test(id)

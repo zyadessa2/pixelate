@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/src/lib/prisma'
 import bcrypt from 'bcryptjs'
 
+// Force dynamic rendering - don't run at build time
+export const dynamic = 'force-dynamic'
+
 // POST - Create admin user (only works if no admin exists)
 export async function POST(request: NextRequest) {
   try {

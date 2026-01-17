@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/src/lib/auth'
 import prisma from '@/src/lib/prisma'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 // Helper to validate MongoDB ObjectId
 function isValidObjectId(id: string): boolean {
   return /^[0-9a-fA-F]{24}$/.test(id)

@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/src/lib/auth'
 import prisma from '@/src/lib/prisma'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 // GET all clients
 export async function GET() {
   try {

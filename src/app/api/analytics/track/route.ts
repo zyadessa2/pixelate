@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/src/lib/prisma'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 // POST - Track page view
 export async function POST(request: NextRequest) {
   try {
