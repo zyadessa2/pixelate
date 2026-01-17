@@ -3,6 +3,7 @@ import prisma from '@/src/lib/prisma'
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // POST - Track page view
 export async function POST(request: NextRequest) {

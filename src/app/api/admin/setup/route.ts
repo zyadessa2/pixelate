@@ -4,6 +4,24 @@ import bcrypt from 'bcryptjs'
 
 // Force dynamic rendering - don't run at build time
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
+// GET - Check if setup is needed
+export async function GET() {
+  try {
+    const adminCount = await prisma.admin.count()
+    return NextResponse.json({ 
+      setupRequired: adminCount === 0,
+      message: adminCount === 0 ? 'No admin exists, setup required' : 'Admin already exists'
+    })
+  } catch (error) {
+    console.error('Error checking admin:', error)
+    return NextResponse.json(
+      { error: 'Failed to check admin status' },
+      { status: 500 }
+    )
+  }
+}
 
 // POST - Create admin user (only works if no admin exists)
 export async function POST(request: NextRequest) {

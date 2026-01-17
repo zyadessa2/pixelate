@@ -3,6 +3,7 @@ import { authOptions } from '@/src/lib/auth'
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 const handler = NextAuth(authOptions)
 

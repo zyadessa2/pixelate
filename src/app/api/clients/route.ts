@@ -5,6 +5,7 @@ import prisma from '@/src/lib/prisma'
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 // GET all clients
 export async function GET() {
