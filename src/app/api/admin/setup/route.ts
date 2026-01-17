@@ -5,9 +5,17 @@ import bcrypt from 'bcryptjs'
 // Force dynamic rendering - don't run at build time
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
+export const fetchCache = 'force-no-store'
 
-// GET - Check if setup is needed
+// GET - Check if setup is needed (safe version that won't run at build)
 export async function GET() {
+  // During build time, return a simple response
+  if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
+    return NextResponse.json({ 
+      message: 'Setup endpoint available at runtime'
+    })
+  }
+
   try {
     const adminCount = await prisma.admin.count()
     return NextResponse.json({ 
