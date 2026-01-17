@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Project {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  mainTitle  String
+  client     String
+  location   String
+  date       String
+  category   String
+  featured   Boolean  @default(false)
+  overview   String
+  stats      Stat[]
+  services   String[]
+  images     String[]
+  clientLogo String
+  views      Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  analytics Analytics[]
+
+  @@map("projects")
+}
+
+type Stat {
+  value String
+  label String
+}
+
+model Client {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  logo        String
+  subtitle    String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("clients")
+}
+
+model Analytics {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  type      AnalyticsType
+  page      String
+  projectId String?       @db.ObjectId
+  project   Project?      @relation(fields: [projectId], references: [id])
+  ip        String?
+  userAgent String?
+  referrer  String?
+  country   String?
+  createdAt DateTime      @default(now())
+
+  @@index([createdAt])
+  @@index([type])
+  @@map("analytics")
+}
+
+enum AnalyticsType {
+  page_view
+  project_view
+  click
+}
