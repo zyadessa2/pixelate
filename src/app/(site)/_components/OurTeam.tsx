@@ -32,6 +32,11 @@ const OurTeam = () => {
       image: "/team/team-6.png",
       name: "YASMINA FARHAT",
       position: "Event Project Manager"
+    },
+    {
+      image: "/team/team-7.jpg",
+      name: "KARIM WAEL",
+      position: "Senior Graphic & Web Designer"
     }
   ]
 
@@ -66,11 +71,34 @@ const OurTeam = () => {
           para="Meet the talented individuals behind Pixelate's success" 
         />
 
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="mb-6 sm:hidden">
+          <div className="group relative flex flex-col items-center text-center">
+            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-[10px] mb-4">
+              <Image
+                src={team[0].image}
+                alt={team[0].name}
+                fill
+                className="object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <h3 className="font-[family-name:var(--font-poppins)] text-sm font-semibold text-white uppercase tracking-wide">
+                {team[0].name}
+              </h3>
+
+              <p className="font-[family-name:var(--font-poppins)] text-xs text-gray-400">
+                {team[0].position}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-7">
           {team.map((member, index) => (
             <div
               key={index}
-              className="group relative flex flex-col items-center text-center"
+              className={`group relative flex flex-col items-center text-center ${index === 0 ? 'hidden sm:flex' : ''}`}
             >
               <div className="relative w-full aspect-[3/4] overflow-hidden rounded-[10px] mb-4">
                 <Image

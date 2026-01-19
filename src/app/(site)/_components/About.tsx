@@ -1,8 +1,13 @@
+'use client'
+
 import Image from 'next/image'
 import { Target, Lightbulb, Package, Award } from 'lucide-react'
 import Header from '@/src/components/Header'
+import { useState } from 'react'
 
 const About = () => {
+  const [activeFeature, setActiveFeature] = useState<number | null>(null)
+  
   const features = [
     {
       icon: Target,
@@ -58,9 +63,18 @@ const About = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group flex items-start gap-3 rounded-2xl border border-white/10 bg-[rgba(30,36,40,0.15)] p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-[#4D606E] sm:gap-4 sm:p-6"
+                onClick={() => setActiveFeature(activeFeature === index ? null : index)}
+                className={`group flex items-start gap-3 rounded-2xl border p-5 backdrop-blur-sm transition-all duration-300 sm:gap-4 sm:p-6 cursor-pointer md:cursor-default ${
+                  activeFeature === index 
+                    ? 'border-white/20 bg-[#4D606E] md:border-white/10 md:bg-[rgba(30,36,40,0.15)]' 
+                    : 'border-white/10 bg-[rgba(30,36,40,0.15)]'
+                } md:hover:border-white/20 md:hover:bg-[#4D606E]`}
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/10 sm:h-12 sm:w-12">
+                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 bg-white/5 transition-all duration-300 sm:h-12 sm:w-12 ${
+                  activeFeature === index
+                    ? 'border-white/40 bg-white/10 md:border-white/20 md:bg-white/5'
+                    : 'border-white/20'
+                } md:group-hover:border-white/40 md:group-hover:bg-white/10`}>
                   <feature.icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                 </div>
                 <div className="flex-1">

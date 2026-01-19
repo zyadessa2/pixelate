@@ -17,7 +17,12 @@ const nextConfig: NextConfig = {
         hostname: '*.googleusercontent.com',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
   },
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: true,
+  reactStrictMode: true,
 };
 
 export default nextConfig;

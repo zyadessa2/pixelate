@@ -169,8 +169,8 @@ const Navbar = () => {
       >
         <div className="flex max-h-[calc(100vh-120px)] flex-col overflow-y-auto p-4 sm:p-5">
           <a
-            href="#hero"
-            onClick={(e) => handleSmoothScroll(e, 'hero')}
+            href="/"
+            
             className="rounded-xl px-4 py-3.5 text-base text-white transition-all hover:bg-white/10 active:bg-white/15 sm:text-lg cursor-pointer"
           >
             Home
@@ -183,8 +183,7 @@ const Navbar = () => {
             About Us
           </a>
           <a
-            href="#portfolio"
-            onClick={(e) => handleSmoothScroll(e, 'portfolio')}
+            href="/projects"
             className="rounded-xl px-4 py-3.5 text-base text-white transition-all hover:bg-white/10 active:bg-white/15 sm:text-lg cursor-pointer"
           >
             Projects

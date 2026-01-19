@@ -1,0 +1,23 @@
+{
+  "name": "Pixelate Events - Event Production Dubai",
+  "short_name": "Pixelate",
+  "description": "Leading event production company in Dubai specializing in AVL, LED screens, sound systems, lighting, event management, and exhibitions.",
+  "icons": [
+    {
+      "src": "/pixelate-nav-2.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#0F1419",
+  "background_color": "#0F1419",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en-AE",
+  "dir": "ltr",
+  "categories": ["business", "events", "production"],
+  "screenshots": []
+}

@@ -1,7 +1,12 @@
+'use client'
+
 import { Eye, Lightbulb, Palette, Rocket, TrendingUp } from 'lucide-react'
 import Header from '@/src/components/Header'
+import { useState } from 'react'
 
 const OurProcess = () => {
+  const [activeStep, setActiveStep] = useState<number | null>(null)
+  
   const steps = [
     {
       icon: Eye,
@@ -70,12 +75,21 @@ const OurProcess = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group flex flex-col items-start gap-4 rounded-2xl border border-white/10 bg-[rgba(30,36,40,0.15)] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-[#4D606E] hover:scale-[1.02]"
+              onClick={() => setActiveStep(activeStep === index ? null : index)}
+              className={`group flex flex-col items-center md:items-start gap-4 rounded-2xl border p-6 backdrop-blur-sm transition-all duration-300 cursor-pointer md:cursor-default ${
+                activeStep === index
+                  ? 'border-white/20 bg-[#4D606E] scale-[1.02] md:border-white/10 md:bg-[rgba(30,36,40,0.15)] md:scale-100'
+                  : 'border-white/10 bg-[rgba(30,36,40,0.15)]'
+              } md:hover:border-white/20 md:hover:bg-[#4D606E] md:hover:scale-[1.02]`}
             >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/10">
+              <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 bg-white/5 transition-all duration-300 ${
+                activeStep === index
+                  ? 'border-white/40 bg-white/10 md:border-white/20 md:bg-white/5'
+                  : 'border-white/20'
+              } md:group-hover:border-white/40 md:group-hover:bg-white/10`}>
                 <step.icon className="h-7 w-7 text-white" />
               </div>
-              <div className="flex-1 w-full">
+              <div className="flex-1 w-full text-center md:text-left">
                 <div className="mb-3 font-[family-name:var(--font-poppins)] text-5xl font-normal text-white/20">
                   {step.number}
                 </div>
