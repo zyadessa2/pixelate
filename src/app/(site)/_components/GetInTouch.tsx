@@ -86,6 +86,8 @@ const GetInTouch = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6 justify-center w-full sm:w-auto">
             <a 
               href="https://www.facebook.com/pixelate.events"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"
             >
               <div className="flex w-[50px] h-[50px] sm:w-[64.053px] sm:h-[64.053px] justify-center items-center flex-shrink-0 rounded-full bg-[rgba(115,130,141,0.10)]">
@@ -95,6 +97,8 @@ const GetInTouch = () => {
             </a>
             <a 
               href="https://www.instagram.com/pixelate_events"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"
             >
               <div className="flex w-[50px] h-[50px] sm:w-[64.053px] sm:h-[64.053px] justify-center items-center flex-shrink-0 rounded-full bg-[rgba(115,130,141,0.10)]">
@@ -104,12 +108,31 @@ const GetInTouch = () => {
             </a>
             <a 
               href="https://www.linkedin.com/in/pixelateevents/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"
             >
               <div className="flex w-[50px] h-[50px] sm:w-[64.053px] sm:h-[64.053px] justify-center items-center flex-shrink-0 rounded-full bg-[rgba(115,130,141,0.10)]">
                 <Linkedin className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               </div>
               <span className="font-[family-name:var(--font-poppins)] text-sm text-white">LinkedIn</span>
+            </a>
+            <a 
+              href="https://allpixelate.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"
+            >
+              <div className="flex w-[50px] h-[50px] sm:w-[64.053px] sm:h-[64.053px] justify-center items-center flex-shrink-0 rounded-full bg-[rgba(115,130,141,0.10)] overflow-hidden">
+                <Image
+                  src="/logo.svg"
+                  alt="Portfolio"
+                  width={52}
+                  height={52}
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-[family-name:var(--font-poppins)] text-sm text-white">Portfolio</span>
             </a>
           </div>
         </div>

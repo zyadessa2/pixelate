@@ -17,9 +17,10 @@ const ProjectsPage = () => {
 
   // Hero Images for slideshow
   const heroImages = [
-    '/projects/2.jpg',
-    '/projects/1.jpg',
-    '/hero-portfolio.png'
+    '/portfolio/2.jpeg',
+    '/portfolio/1.jpeg',
+    '/portfolio/3.png',
+    '/portfolio/4.jpeg',
   ]
 
   // Auto-rotate hero images

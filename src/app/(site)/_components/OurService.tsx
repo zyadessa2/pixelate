@@ -42,7 +42,7 @@ const OurService = () => {
       title: "Organizational Event",
       subtitle: "Corporate Events",
       description: "Comprehensive planning and execution of corporate events, conferences and business gatherings.",
-      image: "/ourServices/—Pngtree—concert light show stage lights_15533230.png"
+      image: "/ourServices/event-management-july.webp"
 
     },
     {
@@ -80,6 +80,20 @@ const OurService = () => {
       subtitle: "Visualization & Rendering",
       description: "Photorealistic 3D visualizations and renderings to preview and perfect your event design before execution.",
       image: "/ourServices/1.webp"
+    },
+    {
+      icon: Monitor,
+      title: "Website Design",
+      subtitle: "Design & Development",
+      description: "Professional website design and development services creating responsive, modern websites that engage audiences and drive results.",
+      image: "/ourServices/dev.jpeg"
+    },
+    {
+      icon: Box,
+      title: "Application Design",
+      subtitle: "App Development",
+      description: "Custom application design and development solutions for mobile and desktop platforms with intuitive user experiences.",
+      image: "/ourServices/dev.jpeg"
     }
   ]
 
