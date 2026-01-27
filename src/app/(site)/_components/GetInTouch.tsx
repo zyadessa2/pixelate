@@ -29,7 +29,7 @@ const GetInTouch = () => {
 
       <div className="relative mx-auto max-w-7xl rounded-[20px] bg-[#2B353C]/30 p-6 backdrop-blur-sm sm:rounded-[25px] sm:p-8 md:rounded-[30px] md:p-10 lg:rounded-[35px] lg:p-12 xl:p-16 z-10">
         <Header 
-          word1="Get In" 
+          word1="GetIn" 
           word2="Touch" 
           para="Ready to elevate your event? Let's discuss your vision" 
         />

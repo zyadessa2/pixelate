@@ -129,7 +129,7 @@ const Navbar = () => {
           <Link
             href="#contact"
             onClick={(e) => handleSmoothScroll(e, 'contact')}
-            className="hidden rounded-full bg-gray-700 px-4 py-2 text-sm text-white transition-all hover:bg-gray-600 active:scale-95 sm:block lg:px-6 xl:text-base"
+            className="hidden rounded-full bg-gray-700 px-4 py-2 text-sm text-white text-center transition-all hover:bg-gray-600 active:scale-95 sm:block lg:px-6 xl:text-base mx-auto"
           >
             Contact Us
           </Link>
