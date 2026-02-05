@@ -11,7 +11,6 @@ export interface Project {
   client: string
   location: string
   date: string
-  image: string
   clientLogo: string
   category: string
   featured: boolean

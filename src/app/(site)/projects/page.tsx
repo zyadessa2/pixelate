@@ -198,7 +198,7 @@ const ProjectsPage = () => {
                 <div className="p-4 sm:p-6 md:p-8">
                   <div className="relative h-[280px] w-full overflow-hidden rounded-[15px] sm:h-[320px] md:h-[380px] lg:h-[420px]">
                     <Image
-                      src={getImageUrl(project.image)}
+                      src={getImageUrl(project.images?.[0] || '')}
                       alt={project.mainTitle}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"

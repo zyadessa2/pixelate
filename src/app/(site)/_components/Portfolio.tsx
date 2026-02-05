@@ -90,7 +90,7 @@ const Portfolio = () => {
               >
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
-                    src={getImageUrl(project.image) || '/portfolio-image.jpg'}
+                    src={getImageUrl(project.images?.[0]) || '/portfolio-image.jpg'}
                     alt={project.mainTitle}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
