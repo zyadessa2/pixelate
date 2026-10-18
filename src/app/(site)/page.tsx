@@ -18,7 +18,9 @@ export default function Home() {
     "description": "Leading event production company in Dubai specializing in AVL, LED screens, sound systems, lighting, event management, exhibitions, 3D concepts, and creative design with over 20 years of expertise.",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Office 1914, 19th Floor, The Binary by Omniyat, Business Bay",
       "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
       "addressCountry": "AE"
     },
     "geo": {

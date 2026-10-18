@@ -114,11 +114,16 @@ const Footer = () => {
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0 mt-0.5" />
-                <span className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed">
-                  123 Creative Avenue<br />
-                  New York, NY 10001<br />
-                  United States
-                </span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Office%201914%2C%2019th%20Floor%2C%20The%20Binary%20by%20Omniyat%2C%20Business%20Bay%2C%20Dubai%2C%20United%20Arab%20Emirates"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed transition-colors hover:text-white"
+                >
+                  Office 1914, 19th Floor<br />
+                  The Binary by Omniyat, Business Bay<br />
+                  Dubai, United Arab Emirates
+                </a>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0" />

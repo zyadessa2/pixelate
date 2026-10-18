@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
 import Header from '@/src/components/Header'
 
 const GetInTouch = () => {
@@ -75,6 +75,19 @@ const GetInTouch = () => {
                 <span className="truncate">eslam@pixelateuae.com</span>
               </a>
             </div>
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Office%201914%2C%2019th%20Floor%2C%20The%20Binary%20by%20Omniyat%2C%20Business%20Bay%2C%20Dubai%2C%20United%20Arab%20Emirates"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex max-w-md items-start justify-center gap-2 rounded-lg bg-[rgba(115,130,141,0.3)] px-4 py-3 font-[family-name:var(--font-poppins)] text-xs text-white backdrop-blur-sm transition-all duration-300 hover:bg-[rgba(115,130,141,0.5)] sm:text-sm"
+            >
+              <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
+              <span>
+                Office 1914, 19th Floor, The Binary by Omniyat, Business Bay,
+                Dubai, United Arab Emirates
+              </span>
+            </a>
           </div>
         </div>
 
