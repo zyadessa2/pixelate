@@ -1,45 +1,12 @@
-'use client'
-
 import Image from 'next/image'
 import { MapPin, Calendar } from 'lucide-react'
 import Header from '@/src/components/Header'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import { getImageUrl } from '@/src/lib/image-utils'
-import ProjectModal, { Project } from '@/src/components/ProjectModal'
+import { getProjects } from '@/src/lib/projects'
 
-const Portfolio = () => {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('/api/projects?limit=6')
-        const data = await response.json()
-        if (data.success) {
-          setProjects(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching projects:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchProjects()
-  }, [])
-
-  const openProjectModal = (project: Project) => {
-    setSelectedProject(project)
-  }
-
-  const closeProjectModal = () => {
-    setSelectedProject(null)
-  }
-
-  const displayProjects: Project[] = projects.length > 0 ? projects : []
+const Portfolio = async () => {
+  const projects = await getProjects(6)
 
   return (
     <section id="portfolio" className="bg-[#0F1419] relative min-h-screen px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24 overflow-hidden">
@@ -73,19 +40,15 @@ const Portfolio = () => {
         />
 
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {loading ? (
-            <div className="col-span-full flex items-center justify-center py-12">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-gray-600 border-t-white" />
-            </div>
-          ) : displayProjects.length === 0 ? (
+          {projects.length === 0 ? (
             <div className="col-span-full text-center text-gray-400 py-12">
               No projects available yet.
             </div>
           ) : (
-            displayProjects.map((project) => (
-              <div
+            projects.map((project) => (
+              <Link
                 key={project.id}
-                onClick={() => openProjectModal(project)}
+                href={`/projects/${project.id}`}
                 className="group relative overflow-hidden rounded-[20px] bg-[#2B353C] backdrop-blur-sm transition-all duration-300 hover:bg-[#2B353C]/80 cursor-pointer"
               >
                 <div className="relative h-48 w-full overflow-hidden">
@@ -93,6 +56,7 @@ const Portfolio = () => {
                     src={getImageUrl(project.images?.[0]) || '/portfolio-image.jpg'}
                     alt={project.mainTitle}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2B353C] via-transparent to-transparent opacity-60" />
@@ -142,7 +106,7 @@ const Portfolio = () => {
                     </div>
                   )} */}
                 </div>
-              </div>
+              </Link>
             ))
           )}
         </div>
@@ -153,8 +117,6 @@ const Portfolio = () => {
             </Link>
         </div>
       </div>
-
-      <ProjectModal project={selectedProject} onClose={closeProjectModal} />
     </section>
   )
 }

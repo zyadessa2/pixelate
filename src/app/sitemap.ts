@@ -1,56 +1,16 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
+import { prisma } from '@/src/lib/prisma'
+import { services } from '@/src/lib/services'
+import { site } from '@/src/lib/site'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://pixelate.ae'
-  
+// Query current projects on each sitemap request, including after admin edits.
+export const dynamic = 'force-dynamic'
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const projects = await prisma.project.findMany({ select: { id: true } })
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#service`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#process`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#team`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#portfolio`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#clients`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
+    ...['', '/services', '/projects', '/contact', ...services.map(service => `/services/${service.slug}`)]
+      .map(path => ({ url: `${site.url}${path}` })),
+    ...projects.map(project => ({ url: `${site.url}/projects/${project.id}` })),
   ]
 }

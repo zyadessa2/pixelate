@@ -1,26 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { services } from '@/src/lib/services'
+import { mapsUrl, site } from '@/src/lib/site'
 import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react'
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Process', href: '#process' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Clients', href: '#clients' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/#about' },
+    { name: 'Process', href: '/#process' },
+    { name: 'Portfolio', href: '/projects' },
+    { name: 'Clients', href: '/#clients' },
+    { name: 'Services', href: '/services' },
+    { name: 'Contact', href: '/contact' }
   ]
 
-  const services = [
-    'AVL Solutions',
-    'LED Screen',
-    'Sound System',
-    'Light System',
-    'Event Management',
-    'Production'
-  ]
 
   return (
     <footer className="bg-[#0F1419] border-t border-white/5">
@@ -42,27 +36,30 @@ const Footer = () => {
               </span>
             </div>
             <p className="font-sans text-xs sm:text-sm leading-relaxed text-gray-400 mb-6 max-w-xs">
-              Delivering exceptional audio, visual, and lighting experiences for unforgettable events across the globe.
+              Event production, audio visual lighting and creative design from Business Bay, Dubai, UAE.
             </p>
-            
+
             {/* Social Media Icons */}
             <div className="flex gap-3">
-              <a 
-                href="#" 
+              <a
+                href={site.socials.facebook}
+                target="_blank" rel="noopener noreferrer"
                 className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-[rgba(115,130,141,0.2)] transition-all duration-300 hover:bg-[rgba(115,130,141,0.4)]"
                 aria-label="Facebook"
               >
                 <Facebook className="h-4 w-4 sm:h-5 sm:w-5 text-gray-300" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href={site.socials.instagram}
+                target="_blank" rel="noopener noreferrer"
                 className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-[rgba(115,130,141,0.2)] transition-all duration-300 hover:bg-[rgba(115,130,141,0.4)]"
                 aria-label="Instagram"
               >
                 <Instagram className="h-4 w-4 sm:h-5 sm:w-5 text-gray-300" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href={site.socials.linkedin}
+                target="_blank" rel="noopener noreferrer"
                 className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-[rgba(115,130,141,0.2)] transition-all duration-300 hover:bg-[rgba(115,130,141,0.4)]"
                 aria-label="LinkedIn"
               >
@@ -79,7 +76,7 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="font-sans text-xs sm:text-sm text-gray-400 transition-colors hover:text-white"
                   >
@@ -97,10 +94,10 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
-                <li key={service}>
-                  <span className="font-sans text-xs sm:text-sm text-gray-400">
-                    {service}
-                  </span>
+                <li key={service.slug}>
+                  <Link href={`/services/${service.slug}`} className="font-sans text-xs sm:text-sm text-gray-400 hover:text-white">
+                    {service.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -115,20 +112,18 @@ const Footer = () => {
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0 mt-0.5" />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Office%201914%2C%2019th%20Floor%2C%20The%20Binary%20by%20Omniyat%2C%20Business%20Bay%2C%20Dubai%2C%20United%20Arab%20Emirates"
+                  href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed transition-colors hover:text-white"
                 >
-                  Office 1914, 19th Floor<br />
-                  The Binary by Omniyat, Business Bay<br />
-                  Dubai, United Arab Emirates
+                  {site.address}
                 </a>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0" />
-                <a 
-                  href="tel:+971555570449"
+                <a
+                  href={`tel:${site.phone}`}
                   className="font-sans text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   +971 55 557 0449
@@ -136,11 +131,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0" />
-                <a 
-                  href="mailto:eslam@pixelateuae.com"
+                <a
+                  href={`mailto:${site.email}`}
                   className="font-sans text-xs sm:text-sm text-gray-400 hover:text-white transition-colors break-all"
                 >
-                  eslam@pixelateuae.com
+                  {site.email}
                 </a>
               </li>
             </ul>
@@ -151,28 +146,9 @@ const Footer = () => {
         <div className="mt-8 sm:mt-12 border-t border-white/5 pt-6 sm:pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <p className="font-sans text-xs sm:text-sm text-gray-500">
-              © 2025 Pixelate. All rights reserved.
+              © {new Date().getFullYear()} Pixelate. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <Link 
-                href="#" 
-                className="font-sans text-xs sm:text-sm text-gray-500 hover:text-gray-300 transition-colors whitespace-nowrap"
-              >
-                Privacy Policy
-              </Link>
-              <Link 
-                href="#" 
-                className="font-sans text-xs sm:text-sm text-gray-500 hover:text-gray-300 transition-colors whitespace-nowrap"
-              >
-                Terms of Service
-              </Link>
-              <Link 
-                href="#" 
-                className="font-sans text-xs sm:text-sm text-gray-500 hover:text-gray-300 transition-colors whitespace-nowrap"
-              >
-                Cookie Policy
-              </Link>
-            </div>
+
           </div>
         </div>
       </div>

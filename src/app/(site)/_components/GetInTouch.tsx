@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
 import Header from '@/src/components/Header'
+import { mapsUrl, site } from '@/src/lib/site'
 
 const GetInTouch = () => {
   return (
@@ -44,6 +45,7 @@ const GetInTouch = () => {
                   src="/team/team-1.png"
                   alt="Eslam Mahrous"
                   fill
+                  sizes="128px"
                   className="object-cover grayscale"
                 />
               </div>
@@ -61,31 +63,30 @@ const GetInTouch = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 w-full sm:w-auto">
               <a 
-                href="tel:+971555570449"
+                href={`tel:${site.phone}`}
                 className="flex items-center justify-center gap-2 rounded-lg bg-[rgba(115,130,141,0.3)] px-4 py-3 font-[family-name:var(--font-poppins)] text-xs sm:text-sm text-white backdrop-blur-sm transition-all duration-300 hover:bg-[rgba(115,130,141,0.5)] whitespace-nowrap"
               >
                 <Phone className="h-4 w-4 flex-shrink-0" />
                 <span className="truncate">+971 55 557 0449</span>
               </a>
               <a 
-                href="mailto:eslam@pixelateuae.com"
+                href={`mailto:${site.email}`}
                 className="flex items-center justify-center gap-2 rounded-lg bg-black/50 px-4 py-3 font-[family-name:var(--font-poppins)] text-xs sm:text-sm text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/70"
               >
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="truncate">eslam@pixelateuae.com</span>
+                <span className="truncate">{site.email}</span>
               </a>
             </div>
 
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Office%201914%2C%2019th%20Floor%2C%20The%20Binary%20by%20Omniyat%2C%20Business%20Bay%2C%20Dubai%2C%20United%20Arab%20Emirates"
+              href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex max-w-md items-start justify-center gap-2 rounded-lg bg-[rgba(115,130,141,0.3)] px-4 py-3 font-[family-name:var(--font-poppins)] text-xs text-white backdrop-blur-sm transition-all duration-300 hover:bg-[rgba(115,130,141,0.5)] sm:text-sm"
             >
               <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
               <span>
-                Office 1914, 19th Floor, The Binary by Omniyat, Business Bay,
-                Dubai, United Arab Emirates
+                {site.address}
               </span>
             </a>
           </div>
@@ -98,7 +99,7 @@ const GetInTouch = () => {
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6 justify-center w-full sm:w-auto">
             <a 
-              href="https://www.facebook.com/pixelate.events"
+              href={site.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"
@@ -109,7 +110,7 @@ const GetInTouch = () => {
               <span className="font-[family-name:var(--font-poppins)] text-sm text-white">Facebook</span>
             </a>
             <a 
-              href="https://www.instagram.com/pixelate_events"
+              href={site.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"
@@ -120,7 +121,7 @@ const GetInTouch = () => {
               <span className="font-[family-name:var(--font-poppins)] text-sm text-white">Instagram</span>
             </a>
             <a 
-              href="https://www.linkedin.com/in/pixelateevents/"
+              href={site.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 w-full sm:w-[215.179px] h-[90px] sm:h-[111.092px] rounded-[12.01px] border-[0.801px] border-[#73828D] transition-all duration-300 hover:bg-[rgba(30,36,40,0.3)] px-4"

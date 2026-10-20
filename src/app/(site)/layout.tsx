@@ -1,27 +1,14 @@
 import Navbar from "@/src/components/navbar/Navbar";
 import Footer from "@/src/components/Footer/Footer";
-import type { Metadata } from "next";
+import JsonLd from "@/src/components/JsonLd";
+import { businessSchema } from "@/src/lib/site";
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://pixelate.ae'),
-  title: {
-    default: 'Pixelate - Premier Event Production & AVL Services in Dubai',
-    template: '%s | Pixelate Events Dubai'
-  },
-  description: 'Leading event production company in Dubai specializing in AVL, LED screens, sound systems, lighting, event management, exhibitions, 3D concepts, and creative design. Transform your events with 20+ years of expertise.',
-  verification: {
-    google: 'your-google-verification-code',
-  },
-};
-
-export default function SiteLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[100] focus:bg-white focus:p-4 focus:text-black">Skip to content</a>
       <Navbar />
+      <JsonLd data={businessSchema} />
       {children}
       <Footer />
     </>

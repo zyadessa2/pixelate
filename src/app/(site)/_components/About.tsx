@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import LazyVideo from '@/src/components/LazyVideo'
 import { Target, Lightbulb, Package, Award } from 'lucide-react'
 import Header from '@/src/components/Header'
 import { useState } from 'react'
@@ -91,15 +91,7 @@ const About = () => {
 
           <div className="flex items-center justify-center lg:justify-end">
             <div className="relative h-[350px] w-full max-w-md overflow-hidden rounded-3xl border-4 border-white/20 shadow-2xl sm:h-[450px] md:h-[550px] lg:h-[600px]">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="h-full w-full object-cover"
-              >
-                <source src="/about-video.mp4" type="video/mp4" />
-              </video>
+              <LazyVideo src="/about-video.mp4" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

@@ -1,102 +1,11 @@
-'use client'
-
 import { Video, Monitor, Volume2, Lightbulb, Calendar, ClipboardList, Package, Store, Palette, Box } from 'lucide-react'
 import Header from '@/src/components/Header'
 import Image from 'next/image'
-import { useState } from 'react'
+import Link from 'next/link'
+import { services } from '@/src/lib/services'
 
 const OurService = () => {
-  const [activeService, setActiveService] = useState<number | null>(null)
-
-  const services = [
-    {
-      icon: Video,
-      title: "AVL",
-      subtitle: "Audio Visual Lighting",
-      description: "Complete audio-visual and lighting solutions for professional events, concerts, and conferences with cutting-edge technology.",
-      image: "/ourServices/avl (1).webp"
-    },
-    {
-      icon: Monitor,
-      title: "LED Screen",
-      subtitle: "Display Solutions",
-      description: "Premium sound systems delivering crystal-clear audio for events of any scale, from intimate gatherings to large concerts.",
-      image: "/ourServices/stage-background-led-screen_9.webp"
-    },
-    {
-      icon: Volume2,
-      title: "Sound System",
-      subtitle: "Audio Solutions",
-      description: "Premium sound systems delivering crystal-clear audio for events of any scale, from intimate gatherings to large concerts.",
-      image: "/ourServices/360_F_898633639_pcBdWh3fDOEogkFEoJB2ryQqLSuFloX1.jpg"
-    },
-    {
-      icon: Lightbulb,
-      title: "Light System",
-      subtitle: "Stage Lighting",
-      description: "Dynamic lighting design that transforms spaces and creates unforgettable atmospheric experiences.",
-      image: "/ourServices/pngtree-concert-light-show-stage-lights-picture-image_15533230.jpg"
-    },
-    {
-      icon: Calendar,
-      title: "Organizational Event",
-      subtitle: "Corporate Events",
-      description: "Comprehensive planning and execution of corporate events, conferences and business gatherings.",
-      image: "/ourServices/event-management-july.webp"
-
-    },
-    {
-      icon: ClipboardList,
-      title: "Event Management",
-      subtitle: "Managed Solutions",
-      description: "End-to-end event management services ensuring seamless execution from concept to completion.",
-      image: "/ourServices/event-management-july.webp"
-    },
-    {
-      icon: Package,
-      title: "Production",
-      subtitle: "Event Production",
-      description: "Professional production services bringing your creative vision to life with technical excellence.",
-      image: "/ourServices/istockphoto-1480245214-612x612.jpg"
-    },
-    {
-      icon: Store,
-      title: "Exhibition",
-      subtitle: "Trade Shows & Expos",
-      description: "Custom exhibition booth design and management for trade shows, expos, and product launches.",
-      image: "/ourServices/360_F_600566798_ktW6oDRY7hFlJJapGJAPPseAPo9CXTQY.jpg"
-
-    },
-    {
-      icon: Palette,
-      title: "Design",
-      subtitle: "Creative Design",
-      description: "Innovative design solutions combining graphics and visual communications that captivate audiences.",
-      image: "/ourServices/blue-and-purple-paint-swirl-abstract-17-09-2024-1726572434.jpg"
-    },
-    {
-      icon: Box,
-      title: "3D Concept",
-      subtitle: "Visualization & Rendering",
-      description: "Photorealistic 3D visualizations and renderings to preview and perfect your event design before execution.",
-      image: "/ourServices/1.webp"
-    },
-    {
-      icon: Monitor,
-      title: "Website Design",
-      subtitle: "Design & Development",
-      description: "Professional website design and development services creating responsive, modern websites that engage audiences and drive results.",
-      image: "/ourServices/dev.jpeg"
-    },
-    {
-      icon: Box,
-      title: "Application Design",
-      subtitle: "App Development",
-      description: "Custom application design and development solutions for mobile and desktop platforms with intuitive user experiences.",
-      image: "/ourServices/dev.jpeg"
-    }
-  ]
-
+  const icons = [Video, Monitor, Volume2, Lightbulb, Calendar, ClipboardList, Package, Store, Palette, Box, Monitor, Box]
   return (
     <section id="service" className="bg-[#0F1419] relative min-h-screen px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24 overflow-hidden">
       <div
@@ -125,23 +34,26 @@ const OurService = () => {
         <Header
           word1="Our"
           word2="Service"
-          para="Comprehensive AVL and event production solutions"
+          para="Explore our event production, AVL and creative design services in Dubai"
         />
 
         <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 md:grid-cols-2">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              onClick={() => setActiveService(activeService === index ? null : index)}
-              className="group relative overflow-hidden rounded-xl bg-[rgba(30,36,40,0.6)] p-5 sm:p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#3B7FAE] hover:bg-[rgba(30,36,40,0.8)] hover:scale-[1.04] md:cursor-default cursor-pointer"
+          {services.map((service, index) => {
+            const Icon = icons[index]
+            return (
+            <Link
+              key={service.slug}
+              href={`/services/${service.slug}`}
+              className="group relative overflow-hidden rounded-xl bg-[rgba(30,36,40,0.6)] p-5 sm:p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#3B7FAE] hover:bg-[rgba(30,36,40,0.8)] hover:scale-[1.04] cursor-pointer focus-visible:ring-2 focus-visible:ring-white"
               style={{
                 background: 'linear-gradient(135deg, rgba(30,36,40,0.6) 0%, rgba(20,26,30,0.8) 100%)'
               }}
             >
-              <div className={`absolute inset-0 transition-opacity duration-300 ${activeService === index ? 'opacity-20 md:opacity-0' : 'opacity-0'} md:group-hover:opacity-20`}>
+              <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-20 group-focus-visible:opacity-20">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt=""
+                  sizes="(max-width: 768px) 100vw, 560px"
                   fill
                   className="object-cover"
                 />
@@ -150,7 +62,7 @@ const OurService = () => {
               <div className="relative flex flex-col md:flex-row gap-4 md:gap-6 z-10">
                 <div className="flex items-center gap-3 sm:gap-4 md:flex-1">
                   <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#2B5A7E] bg-[rgba(43,90,126,0.2)] transition-all duration-300 group-hover:border-[#3B7FAE] group-hover:bg-[rgba(43,90,126,0.4)] group-hover:shadow-lg group-hover:shadow-[#2B5A7E]/50">
-                    <service.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+                    <Icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                   </div>
                   <div className="flex-1">
                     <h3 className="mb-1 font-[family-name:var(--font-poppins)] text-[23px] font-medium leading-[35.006px] text-white">
@@ -167,8 +79,8 @@ const OurService = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            </Link>
+          )})}
         </div>
       </div>
     </section>

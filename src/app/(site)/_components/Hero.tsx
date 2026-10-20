@@ -8,6 +8,9 @@ const Hero = () => {
         autoPlay
         muted
         playsInline
+        preload="none"
+        poster="/portfolio-image.jpg"
+        aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
       >
         <source src="/hero-video.mp4" type="video/mp4" />
@@ -26,7 +29,8 @@ const Hero = () => {
         <div className="mb-5 w-full sm:mb-6 md:mb-8">
           <Image
             src="/hero-logo.png"
-            alt="Pixelate Portfolio Logo"
+            alt="Pixelate"
+            sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 566px"
             width={500}
             height={266}
             priority
@@ -34,11 +38,9 @@ const Hero = () => {
           />
         </div>
 
-        <p className="mb-2 max-w-2xl px-1 text-center font-[family-name:var(--font-poppins)] text-sm font-normal capitalize leading-[100%] tracking-[0.1em] text-white sm:text-base md:text-[17.622px] md:tracking-[1.762px]">
-          A Collection Of Our Most Impactful<span className="inline-block  bg-gradient-to-r from-[#292F33]/5 to-[#73828D]/50 px-1 py-1 sm:px-1">Event Experiences</span>
-        </p>
-        <p className="mb-8 max-w-2xl  text-center font-[family-name:var(--font-poppins)] text-sm font-normal capitalize leading-[100%] tracking-[0.1em] text-white sm:mb-10 sm:text-base md:mb-12 md:text-[17.622px] md:tracking-[1.762px]">
-          <span className="inline-block  bg-gradient-to-r from-[#292F33]/5 to-[#73828D]/50  py-1 ">Get In Touch </span> To Bring Your Next Event To Life. 
+        <h1 className="mb-4 max-w-3xl text-2xl leading-tight font-semibold text-white sm:text-3xl md:text-4xl">Event Production &amp; AVL in Dubai</h1>
+        <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 sm:mb-10 sm:text-lg">
+          Audio, visual, lighting and creative design for events that bring people together. From corporate gatherings to exhibitions, plan your next experience with Pixelate.
         </p>
 
         <div className="flex flex-col items-center gap-[10.187px] sm:flex-row">

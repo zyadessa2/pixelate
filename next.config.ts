@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [{ source: '/:path*', has: [{ type: 'host', value: 'pixelateuae.com' }], destination: 'https://www.pixelateuae.com/:path*', permanent: true }];
+  },
+  async headers() {
+    const noindex = [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }];
+    return [
+      { source: '/admin/:path*', headers: noindex },
+      { source: '/api/:path*', headers: noindex },
+      ...(process.env.VERCEL_ENV === 'preview' ? [{ source: '/:path*', headers: noindex }] : []),
+    ];
+  },
   /* config options here */
   images: {
     remotePatterns: [
